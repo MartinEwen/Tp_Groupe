@@ -10,6 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require dirname(__DIR__, 3).''.\DIRECTORY_SEPARATOR.'vendor/autoload.php';
+
 (require __DIR__.'/App_KernelDevDebugContainer.php')->set(\ContainerNc1XGcx\App_KernelDevDebugContainer::class, null);
 require __DIR__.'/ContainerNc1XGcx/EntityManager_9a5be93.php';
 require __DIR__.'/ContainerNc1XGcx/getWebProfiler_Controller_RouterService.php';
@@ -191,7 +192,9 @@ $classes[] = 'Symfony\Component\Notifier\Transport\Transports';
 $classes[] = 'Symfony\Component\Notifier\Transport';
 $classes[] = 'Symfony\Component\HttpFoundation\RequestMatcher';
 $classes[] = 'Symfony\Component\DependencyInjection\ServiceLocator';
+
 $classes[] = 'App\Controller\MainController';
+
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\Controller\ProfilerController';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\Controller\RedirectController';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\Controller\TemplateController';

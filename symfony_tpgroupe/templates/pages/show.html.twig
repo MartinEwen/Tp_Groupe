@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pages{% endblock %}
+
+{% block body %}
+    <h1>Pages</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ page.id }}</td>
+            </tr>
+            <tr>
+                <th>Creation</th>
+                <td>{{ page.creation ? page.creation|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Summary</th>
+                <td>{{ page.summary }}</td>
+            </tr>
+            <tr>
+                <th>TitlePage</th>
+                <td>{{ page.titlePage }}</td>
+            </tr>
+            <tr>
+                <th>ImagePages</th>
+                <td>{{ page.imagePages }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_pages_index') }}">back to list</a>
+
+    <a href="{{ path('app_pages_edit', {'id': page.id}) }}">edit</a>
+
+    {{ include('pages/_delete_form.html.twig') }}
+{% endblock %}
