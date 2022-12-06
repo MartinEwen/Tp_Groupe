@@ -8,16 +8,18 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>NameImage</th>
+                <th>article</th>
+                <th>contenu</th>
+                <th>Image</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for image in images %}
             <tr>
-                <td>{{ image.id }}</td>
-                <td>{{ image.nameImage }}</td>
+                <td>{{ image.content.page.titlePage }}</td>
+                <td>{{ image.content.titleContent }}</td>
+                <td><img src="{{ asset('uploads/images/' ~ image.nameImage) }}" width="100"></td>
                 <td>
                     <a href="{{ path('images_show', {'id': image.id}) }}">show</a>
                     <a href="{{ path('images_edit', {'id': image.id}) }}">edit</a>

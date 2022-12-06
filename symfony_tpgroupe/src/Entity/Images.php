@@ -17,7 +17,7 @@ class Images
     private ?string $nameImage = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?contents $content = null;
+    private ?Contents $content = null;
 
     public function getId(): ?int
     {
