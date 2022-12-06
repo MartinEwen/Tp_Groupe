@@ -33,7 +33,7 @@ class ContentsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $contentsRepository->save($content, true);
 
-            return $this->redirectToRoute('contents_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('images_new', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('contents/new.html.twig', [

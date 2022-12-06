@@ -33,7 +33,7 @@ class PagesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $pagesRepository->save($page, true);
 
-            return $this->redirectToRoute('pages_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('contents_new', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('pages/new.html.twig', [
