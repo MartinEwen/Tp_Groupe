@@ -1,20 +1,24 @@
 
 ###> symfony/framework-bundle ###
-/.env.local
-/.env.local.php
-/.env.*.local
-/config/secrets/prod/prod.decrypt.private.php
-/public/bundles/
-/var/
-/vendor/
+
+symfony_tpgroupe/.env.local
+symfony_tpgroupe/.env.local.php
+symfony_tpgroupe/.env.*.local
+symfony_tpgroupe/config/secrets/prod/prod.decrypt.private.php
+symfony_tpgroupe/public/bundles/
+symfony_tpgroupe/var/
+symfony_tpgroupe/vendor/
 ###< symfony/framework-bundle ###
 
 ###> phpunit/phpunit ###
-/phpunit.xml
+symfony_tpgroupe/phpunit.xml
+
 .phpunit.result.cache
 ###< phpunit/phpunit ###
 
 ###> symfony/phpunit-bridge ###
 .phpunit.result.cache
-/phpunit.xml
+
+symfony_tpgroupe/phpunit.xml
+
 ###< symfony/phpunit-bridge ###
