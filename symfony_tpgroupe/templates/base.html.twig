@@ -14,9 +14,9 @@
 		<link
 		rel="stylesheet" href="{{asset("css/style.css")}}">
 
-        {# Bootstrap #}
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+		{# Bootstrap #}
+		<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
 		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
 
@@ -30,31 +30,57 @@
 	</head>
 	<body>
 
-		{% block body %}{% endblock %}
+		{# <HeaderBootstrap> #}
 
-		{# <BootstrapFooter> #}
+		<nav class="navbar navbar-expand-lg navbar-dark navColor">
 
-		<div class="subnavigation-container">
-			<div class="container">
-				<nav class="navbar p-a-0">
-					<ul class="nav navbar-nav col-subnav">
-						<li class="nav-item">
-							<a class="nav-link active" href="#">Home</a>
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">Wiki-HEROES</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarScroll">
+					<ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								user
+							</a>
+							<ul class="dropdown-menu">
+								<li>
+									<a class="dropdown-item" href="#">setting</a>
+								</li>
+								<li>
+									<a class="dropdown-item" href="#">Question</a>
+								</li>
+								<li><hr class="dropdown-divider"></li>
+								<li>
+									<a class="dropdown-item" href="#">logout</a>
+								</li>
+							</ul>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Features</a>
-						</li>
-
-						<li class="nav-item">
-							<a class="nav-link" href="#">Pricing</a>
+							<a class="nav-link active" aria-current="page" href="{{ path('index') }}">HOME</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">About</a>
+							<a class="nav-link" href="{{ path('app_pages_index') }}">PAGES</a>
 						</li>
 					</ul>
-				</nav>
+					<form class="d-flex" role="search">
+						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+						<button class="btn btn-outline-success" type="submit">Search</button>
+					</form>
+				</div>
 			</div>
-		</div>
+
+		</nav>
+
+		{# </HeaderBootstrap> #}
+
+
+		{% block body %}{% endblock %}
+
+
+		{# <BootstrapFooter> #}
 
 		<div class="m-t-3"></div>
 
