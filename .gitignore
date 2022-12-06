@@ -1,5 +1,6 @@
 
 ###> symfony/framework-bundle ###
+
 symfony_tpgroupe/.env.local
 symfony_tpgroupe/.env.local.php
 symfony_tpgroupe/.env.*.local
@@ -11,10 +12,13 @@ symfony_tpgroupe/vendor/
 
 ###> phpunit/phpunit ###
 symfony_tpgroupe/phpunit.xml
+
 .phpunit.result.cache
 ###< phpunit/phpunit ###
 
 ###> symfony/phpunit-bridge ###
 .phpunit.result.cache
+
 symfony_tpgroupe/phpunit.xml
+
 ###< symfony/phpunit-bridge ###
