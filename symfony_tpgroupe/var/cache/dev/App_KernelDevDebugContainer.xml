@@ -341,6 +341,13 @@
         <argument type="service" id=".service_locator.jIxfAsi.App\Controller\ArticleController"/>
       </call>
     </service>
+    <service id="App\Controller\CategoriesController" class="App\Controller\CategoriesController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.jIxfAsi.App\Controller\CategoriesController"/>
+      </call>
+    </service>
     <service id="App\Controller\ContentsController" class="App\Controller\ContentsController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -368,6 +375,9 @@
       <call method="setContainer">
         <argument type="service" id=".service_locator.jIxfAsi.App\Controller\PagesController"/>
       </call>
+    </service>
+    <service id="App\Form\CategoriesType" class="App\Form\CategoriesType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
     </service>
     <service id="App\Form\ContentsType" class="App\Form\ContentsType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
@@ -1182,6 +1192,7 @@
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
       </argument>
       <argument type="collection">
+        <argument>App\Form\CategoriesType</argument>
         <argument>App\Form\ContentsType</argument>
         <argument>App\Form\ImagesType</argument>
         <argument>App\Form\PagesType</argument>
@@ -3171,7 +3182,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.drZA8nR"/>
+      <argument type="service" id=".service_locator._JwDl8W"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -5893,6 +5904,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ArticleController" class="App\Controller\ArticleController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ArticleController" class="App\Controller\ArticleController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ArticleController" class="App\Controller\ArticleController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CategoriesController" class="App\Controller\CategoriesController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CategoriesController" class="App\Controller\CategoriesController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\CategoriesController" class="App\Controller\CategoriesController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ContentsController" class="App\Controller\ContentsController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ContentsController" class="App\Controller\ContentsController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ContentsController" class="App\Controller\ContentsController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -5905,6 +5919,8 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\PagesController" class="App\Controller\PagesController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\PagesController" class="App\Controller\PagesController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\PagesController" class="App\Controller\PagesController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CategoriesType" class="App\Form\CategoriesType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\CategoriesType" class="App\Form\CategoriesType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ContentsType" class="App\Form\ContentsType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ContentsType" class="App\Form\ContentsType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ImagesType" class="App\Form\ImagesType" autowire="true" abstract="true"/>
@@ -6254,6 +6270,33 @@
         <argument key="loader" type="service_closure" id=".errored..service_locator.xUrKPVU.Symfony\Component\Config\Loader\LoaderInterface"/>
       </argument>
     </service>
+    <service id=".service_locator.cIhqKE1" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="content" type="service_closure" id=".errored..service_locator.cIhqKE1.App\Entity\Contents"/>
+        <argument key="image" type="service_closure" id=".errored..service_locator.cIhqKE1.App\Entity\Images"/>
+        <argument key="page" type="service_closure" id=".errored..service_locator.cIhqKE1.App\Entity\Pages"/>
+      </argument>
+    </service>
+    <service id=".service_locator.Ksprajg" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="categoriesRepository" type="service_closure" id="App\Repository\CategoriesRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.gFHHwHB" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="category" type="service_closure" id=".errored..service_locator.gFHHwHB.App\Entity\Categories"/>
+      </argument>
+    </service>
+    <service id=".service_locator.wLJWiJM" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="categoriesRepository" type="service_closure" id="App\Repository\CategoriesRepository"/>
+        <argument key="category" type="service_closure" id=".errored..service_locator.wLJWiJM.App\Entity\Categories"/>
+      </argument>
+    </service>
     <service id=".service_locator.hmYtjsU" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -6311,9 +6354,15 @@
         <argument key="pagesRepository" type="service_closure" id="App\Repository\PagesRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.aA6Xd4U" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.Tdc5sRc" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Controller\ArticleController::index" type="service_closure" id=".service_locator.cIhqKE1"/>
+        <argument key="App\Controller\CategoriesController::delete" type="service_closure" id=".service_locator.wLJWiJM"/>
+        <argument key="App\Controller\CategoriesController::edit" type="service_closure" id=".service_locator.wLJWiJM"/>
+        <argument key="App\Controller\CategoriesController::index" type="service_closure" id=".service_locator.Ksprajg"/>
+        <argument key="App\Controller\CategoriesController::new" type="service_closure" id=".service_locator.Ksprajg"/>
+        <argument key="App\Controller\CategoriesController::show" type="service_closure" id=".service_locator.gFHHwHB"/>
         <argument key="App\Controller\ContentsController::delete" type="service_closure" id=".service_locator.d0_1Peq"/>
         <argument key="App\Controller\ContentsController::edit" type="service_closure" id=".service_locator.d0_1Peq"/>
         <argument key="App\Controller\ContentsController::index" type="service_closure" id=".service_locator.hmYtjsU"/>
@@ -6333,6 +6382,12 @@
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.xUrKPVU"/>
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.xUrKPVU"/>
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.xUrKPVU"/>
+        <argument key="App\Controller\ArticleController:index" type="service_closure" id=".service_locator.cIhqKE1"/>
+        <argument key="App\Controller\CategoriesController:delete" type="service_closure" id=".service_locator.wLJWiJM"/>
+        <argument key="App\Controller\CategoriesController:edit" type="service_closure" id=".service_locator.wLJWiJM"/>
+        <argument key="App\Controller\CategoriesController:index" type="service_closure" id=".service_locator.Ksprajg"/>
+        <argument key="App\Controller\CategoriesController:new" type="service_closure" id=".service_locator.Ksprajg"/>
+        <argument key="App\Controller\CategoriesController:show" type="service_closure" id=".service_locator.gFHHwHB"/>
         <argument key="App\Controller\ContentsController:delete" type="service_closure" id=".service_locator.d0_1Peq"/>
         <argument key="App\Controller\ContentsController:edit" type="service_closure" id=".service_locator.d0_1Peq"/>
         <argument key="App\Controller\ContentsController:index" type="service_closure" id=".service_locator.hmYtjsU"/>
@@ -6516,9 +6571,10 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.drZA8nR" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator._JwDl8W" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Form\CategoriesType" type="service_closure" id="App\Form\CategoriesType"/>
         <argument key="App\Form\ContentsType" type="service_closure" id="App\Form\ContentsType"/>
         <argument key="App\Form\ImagesType" type="service_closure" id="App\Form\ImagesType"/>
         <argument key="App\Form\PagesType" type="service_closure" id="App\Form\PagesType"/>
@@ -6883,6 +6939,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.jIxfAsi" method="withContext"/>
     </service>
+    <service id=".service_locator.jIxfAsi.App\Controller\CategoriesController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\CategoriesController"/>
+      <argument>App\Controller\CategoriesController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.jIxfAsi" method="withContext"/>
+    </service>
     <service id=".service_locator.jIxfAsi.App\Controller\ContentsController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\ContentsController"/>
       <argument>App\Controller\ContentsController</argument>
@@ -7165,12 +7227,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.aA6Xd4U"/>
+      <argument type="service" id=".service_locator.Tdc5sRc"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.aA6Xd4U"/>
+      <argument type="service" id=".service_locator.Tdc5sRc"/>
     </service>
     <service id="debug.traced.messenger.bus.default.inner" class="Symfony\Component\Messenger\MessageBus">
       <argument type="iterator">
@@ -7198,6 +7260,11 @@
       </call>
     </service>
     <service id=".errored..service_locator.xUrKPVU.Symfony\Component\Config\Loader\LoaderInterface" class="Symfony\Component\Config\Loader\LoaderInterface"/>
+    <service id=".errored..service_locator.cIhqKE1.App\Entity\Contents" class="App\Entity\Contents"/>
+    <service id=".errored..service_locator.cIhqKE1.App\Entity\Images" class="App\Entity\Images"/>
+    <service id=".errored..service_locator.cIhqKE1.App\Entity\Pages" class="App\Entity\Pages"/>
+    <service id=".errored..service_locator.gFHHwHB.App\Entity\Categories" class="App\Entity\Categories"/>
+    <service id=".errored..service_locator.wLJWiJM.App\Entity\Categories" class="App\Entity\Categories"/>
     <service id=".errored..service_locator.xKAokjN.App\Entity\Contents" class="App\Entity\Contents"/>
     <service id=".errored..service_locator.d0_1Peq.App\Entity\Contents" class="App\Entity\Contents"/>
     <service id=".errored..service_locator.ag89WnJ.App\Entity\Images" class="App\Entity\Images"/>
@@ -8117,7 +8184,7 @@
     <service id="sensio_framework_extra.security.expression_language" alias="sensio_framework_extra.security.expression_language.default"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.gSv9zYw" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.aA6Xd4U"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.Tdc5sRc"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -8138,9 +8205,11 @@
     <service id=".service_locator.80edgLI" alias="messenger.receiver_locator"/>
     <service id=".service_locator.h8Jkkd2" alias="messenger.retry_strategy_locator"/>
     <service id=".service_locator.0GV1BZZ" alias=".service_locator.gSv9zYw"/>
-    <service id=".service_locator.h92ulLm" alias=".service_locator.aA6Xd4U"/>
+    <service id=".service_locator.I5YQcxo" alias=".service_locator.cIhqKE1"/>
+    <service id=".service_locator.6mkBufV" alias=".service_locator.wLJWiJM"/>
+    <service id=".service_locator.ivBEDxk" alias=".service_locator.Tdc5sRc"/>
     <service id=".service_locator.wKF4yn1" alias=".service_locator.19_mNxd"/>
-    <service id=".service_locator.D_ILgHm" alias=".service_locator.drZA8nR"/>
+    <service id=".service_locator.iTt5hjn" alias=".service_locator._JwDl8W"/>
     <service id=".service_locator.XW18Svm" alias=".service_locator.TcKhdzh"/>
     <service id=".service_locator.O24_MAy" alias=".service_locator.yY.p4P7"/>
     <service id=".service_locator._eRAkJb" alias=".service_locator.jIxfAsi"/>
@@ -8188,6 +8257,10 @@
     <service id="http_client" alias=".debug.http_client"/>
     <service id="doctrine.orm.default_metadata_driver" alias=".doctrine.orm.default_metadata_driver"/>
     <service id=".service_locator.uo5c0SP" alias=".service_locator.xUrKPVU"/>
+    <service id=".service_locator.oBt7ZHG" alias=".service_locator.cIhqKE1"/>
+    <service id=".service_locator.am6nKt5" alias=".service_locator.Ksprajg"/>
+    <service id=".service_locator.wKyVj.F" alias=".service_locator.gFHHwHB"/>
+    <service id=".service_locator.87pyCL." alias=".service_locator.wLJWiJM"/>
     <service id=".service_locator.Ow3MNmT" alias=".service_locator.hmYtjsU"/>
     <service id=".service_locator.F1DCbeF" alias=".service_locator.xKAokjN"/>
     <service id=".service_locator.9v3a2RG" alias=".service_locator.d0_1Peq"/>

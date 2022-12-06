@@ -16,6 +16,9 @@ class Images
     #[ORM\Column(length: 255)]
     private ?string $nameImage = null;
 
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?contents $content = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -29,6 +32,18 @@ class Images
     public function setNameImage(string $nameImage): self
     {
         $this->nameImage = $nameImage;
+
+        return $this;
+    }
+
+    public function getContent(): ?contents
+    {
+        return $this->content;
+    }
+
+    public function setContent(?contents $content): self
+    {
+        $this->content = $content;
 
         return $this;
     }

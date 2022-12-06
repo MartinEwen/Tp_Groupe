@@ -20,6 +20,12 @@ class Contents
     #[ORM\Column(type: Types::TEXT)]
     private ?string $content = null;
 
+    #[ORM\Column]
+    private ?int $fileOrder = null;
+
+    #[ORM\ManyToOne(inversedBy: 'contents')]
+    private ?pages $page = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -45,6 +51,30 @@ class Contents
     public function setContent(string $content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function getFileOrder(): ?int
+    {
+        return $this->fileOrder;
+    }
+
+    public function setFileOrder(int $fileOrder): self
+    {
+        $this->fileOrder = $fileOrder;
+
+        return $this;
+    }
+
+    public function getPage(): ?pages
+    {
+        return $this->page;
+    }
+
+    public function setPage(?pages $page): self
+    {
+        $this->page = $page;
 
         return $this;
     }

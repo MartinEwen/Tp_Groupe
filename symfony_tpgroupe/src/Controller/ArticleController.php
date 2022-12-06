@@ -2,17 +2,23 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+use App\Entity\Pages;
+use App\Entity\Images;
+use App\Entity\Contents;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ArticleController extends AbstractController
 {
-    #[Route('/article', name: 'app_article')]
-    public function index(): Response
+    #[Route('/article/{id}', name: 'article_show', methods: ['GET'])]
+    public function index(Pages $page, Contents $content, Images $image): Response
     {
         return $this->render('article/index.html.twig', [
-            'controller_name' => 'ArticleController',
+            'page' => $page,
+            'content' => $content,
+            'image' => $image,
         ]);
     }
 }
