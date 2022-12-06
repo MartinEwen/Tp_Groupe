@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PagesRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -25,6 +27,17 @@ class Pages
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $imagePages = null;
+
+    #[ORM\ManyToOne(inversedBy: 'pages')]
+    private ?categories $category = null;
+
+    #[ORM\OneToMany(mappedBy: 'page', targetEntity: Contents::class)]
+    private Collection $contents;
+
+    public function __construct()
+    {
+        $this->contents = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -75,6 +88,48 @@ class Pages
     public function setImagePages(?string $imagePages): self
     {
         $this->imagePages = $imagePages;
+
+        return $this;
+    }
+
+    public function getCategory(): ?categories
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?categories $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Contents>
+     */
+    public function getContents(): Collection
+    {
+        return $this->contents;
+    }
+
+    public function addContent(Contents $content): self
+    {
+        if (!$this->contents->contains($content)) {
+            $this->contents->add($content);
+            $content->setPage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContent(Contents $content): self
+    {
+        if ($this->contents->removeElement($content)) {
+            // set the owning side to null (unless already changed)
+            if ($content->getPage() === $this) {
+                $content->setPage(null);
+            }
+        }
 
         return $this;
     }
