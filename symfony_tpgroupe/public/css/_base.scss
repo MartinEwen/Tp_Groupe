@@ -1,51 +1,62 @@
-// <footer>
+// <footerBootstrap>
 
-footer{
+footer {
     color: white;
-  }
-  footer a{
+}
+
+footer a {
     color: #bfffff;
-  }
-  footer a:hover{
+}
+
+footer a:hover {
     color: white;
-  }
-  
-  .footer-bottom{
+}
+
+.footer-bottom {
     background: #3d6277;
     padding: 2em;
-  }
-  .footer-top{
-    background: #2d4958;  
-  }
-  .footer-middle{
-     background: #3d6277;
+}
+
+.footer-top {
+    background: #2d4958;
+}
+
+.footer-middle {
+    background: #3d6277;
     padding-top: 2em;
     color: white;
-  }
-  /**Sub Navigation**/
-  .subnavigation-container{
+}
+
+/**Sub Navigation**/
+.subnavigation-container {
     background: #3d6277;
-  }
-  .subnavigation .nav-link{
+}
+
+.subnavigation .nav-link {
     color: white;
     font-weight: bold;
-  }
-  .subnavigation-container{
+}
+
+.subnavigation-container {
     text-align: center;
-  }
-  .subnavigation-container .navbar{
+}
+
+.subnavigation-container .navbar {
     display: inline-block;
-    margin-bottom: -6px; /* Inline-block margin offffset HACK -Gilron */
-  }
-  .col-subnav a{
+    margin-bottom: -6px;
+    /* Inline-block margin offffset HACK -Gilron */
+}
+
+.col-subnav a {
     padding: 1rem 1rem;
     color: white;
     font-weight: bold;
-  }
-  .col-subnav .active{
-    border-top:5px solid orange;
-   background: white;
-    color: black;
-  }
+}
 
-// </footer>
+.col-subnav .active {
+    border-top: 5px solid orange;
+    background: white;
+    color: black;
+}
+
+// </footerBootstrap>

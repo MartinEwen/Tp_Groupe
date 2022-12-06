@@ -10,6 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require dirname(__DIR__, 3).''.\DIRECTORY_SEPARATOR.'vendor/autoload.php';
+
 (require __DIR__.'/App_KernelDevDebugContainer.php')->set(\ContainerHZVyIxL\App_KernelDevDebugContainer::class, null);
 require __DIR__.'/ContainerHZVyIxL/EntityManager_9a5be93.php';
 require __DIR__.'/ContainerHZVyIxL/getWebProfiler_Controller_RouterService.php';
@@ -174,6 +175,7 @@ require __DIR__.'/ContainerHZVyIxL/get_Messenger_HandlerDescriptor_TGvt0LHServic
 require __DIR__.'/ContainerHZVyIxL/get_Messenger_HandlerDescriptor_XZowc_TService.php';
 require __DIR__.'/ContainerHZVyIxL/get_Messenger_HandlerDescriptor_Lml2ICsService.php';
 
+
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\DoctrineBundle';
@@ -218,6 +220,7 @@ $classes[] = 'Symfony\Component\Notifier\Transport\Transports';
 $classes[] = 'Symfony\Component\Notifier\Transport';
 $classes[] = 'Symfony\Component\HttpFoundation\RequestMatcher';
 $classes[] = 'Symfony\Component\DependencyInjection\ServiceLocator';
+
 $classes[] = 'App\Controller\ArticleController';
 $classes[] = 'App\Controller\CategoriesController';
 $classes[] = 'App\Controller\ContentsController';
@@ -232,6 +235,7 @@ $classes[] = 'App\Repository\CategoriesRepository';
 $classes[] = 'App\Repository\ContentsRepository';
 $classes[] = 'App\Repository\ImagesRepository';
 $classes[] = 'App\Repository\PagesRepository';
+
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\Controller\ProfilerController';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\Controller\RedirectController';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\Controller\TemplateController';
