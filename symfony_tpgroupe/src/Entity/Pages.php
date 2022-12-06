@@ -2,11 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\PagesRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Contents;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\PagesRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: PagesRepository::class)]
 class Pages
@@ -29,7 +30,7 @@ class Pages
     private ?string $imagePages = null;
 
     #[ORM\ManyToOne(inversedBy: 'pages')]
-    private ?categories $category = null;
+    private ?Categories $category = null;
 
     #[ORM\OneToMany(mappedBy: 'page', targetEntity: Contents::class)]
     private Collection $contents;
