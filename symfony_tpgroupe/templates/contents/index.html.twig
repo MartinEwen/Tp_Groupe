@@ -11,6 +11,8 @@
                 <th>Id</th>
                 <th>TitleContent</th>
                 <th>Content</th>
+                <th>order file</th>
+                <th>article</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -20,6 +22,8 @@
                 <td>{{ content.id }}</td>
                 <td>{{ content.titleContent }}</td>
                 <td>{{ content.content }}</td>
+                <td>{{ content.fileOrder }}</td>
+                <td>{{ content.page.titlePage }}</td>
                 <td>
                     <a href="{{ path('contents_show', {'id': content.id}) }}">show</a>
                     <a href="{{ path('contents_edit', {'id': content.id}) }}">edit</a>

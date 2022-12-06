@@ -5,10 +5,11 @@ namespace App\Controller;
 use App\Entity\Images;
 use App\Form\ImagesType;
 use App\Repository\ImagesRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/images')]
 class ImagesController extends AbstractController
@@ -22,16 +23,31 @@ class ImagesController extends AbstractController
     }
 
     #[Route('/new', name: 'images_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, ImagesRepository $imagesRepository): Response
+    public function new(Request $request, ImagesRepository $imagesRepository, SluggerInterface $slugger): Response
     {
         $image = new Images();
         $form = $this->createForm(ImagesType::class, $image);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $imageFile = $form->get('nameImage')->getData();
+                if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
+                $imageFile->move(
+                $this->getParameter('images_directory'),
+                $newFilename
+                );
+                $image->setNameImage($newFilename);
+                
+
             $imagesRepository->save($image, true);
 
             return $this->redirectToRoute('images_index', [], Response::HTTP_SEE_OTHER);
+            }
         }
 
         return $this->renderForm('images/new.html.twig', [

@@ -24,7 +24,7 @@ class Contents
     private ?int $fileOrder = null;
 
     #[ORM\ManyToOne(inversedBy: 'contents')]
-    private ?pages $page = null;
+    private ?Pages $page = null;
 
     public function getId(): ?int
     {

@@ -21,9 +21,12 @@
             <tr>
                 <td>{{ content.content }}</td>
             </tr>
+            
             {# <tr>
                 <td>{{ image.nameImage }}</td>
             </tr> #}
+            {% else %}
+            <h2> Article vide </h2>
             {% endfor %}
         </tbody>
     </table>

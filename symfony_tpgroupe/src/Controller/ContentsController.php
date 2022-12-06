@@ -4,20 +4,22 @@ namespace App\Controller;
 
 use App\Entity\Contents;
 use App\Form\ContentsType;
+use App\Repository\PagesRepository;
 use App\Repository\ContentsRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/contents')]
 class ContentsController extends AbstractController
 {
     #[Route('/', name: 'contents_index', methods: ['GET'])]
-    public function index(ContentsRepository $contentsRepository): Response
+    public function index(ContentsRepository $contentsRepository, PagesRepository $pagesRepository): Response
     {
         return $this->render('contents/index.html.twig', [
             'contents' => $contentsRepository->findAll(),
+            'pages' => $pagesRepository->findAll(),
         ]);
     }
 
