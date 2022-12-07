@@ -90,14 +90,9 @@ footer a:hover {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background-color: blue;
-  height: 300px;
-  width: 700px;
 }
 
 .main1 {
-  background-color: red;
-  height: 160px;
   width: 400px;
   margin: 2em;
 }
