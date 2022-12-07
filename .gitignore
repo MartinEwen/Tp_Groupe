@@ -22,3 +22,4 @@ symfony_tpgroupe/phpunit.xml
 symfony_tpgroupe/phpunit.xml
 
 ###< symfony/phpunit-bridge ###
+symfony_tpgroupe/var/log/dev.log
