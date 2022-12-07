@@ -20,6 +20,7 @@
       <parameter key="MonologBundle">Symfony\Bundle\MonologBundle\MonologBundle</parameter>
       <parameter key="MakerBundle">Symfony\Bundle\MakerBundle\MakerBundle</parameter>
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
+      <parameter key="DoctrineFixturesBundle">Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
@@ -65,6 +66,10 @@
       <parameter key="SensioFrameworkExtraBundle" type="collection">
         <parameter key="path">C:\wamp64\www\Tp_Groupe\symfony_tpgroupe\vendor\sensio\framework-extra-bundle\src</parameter>
         <parameter key="namespace">Sensio\Bundle\FrameworkExtraBundle</parameter>
+      </parameter>
+      <parameter key="DoctrineFixturesBundle" type="collection">
+        <parameter key="path">C:\wamp64\www\Tp_Groupe\symfony_tpgroupe\vendor\doctrine\doctrine-fixtures-bundle</parameter>
+        <parameter key="namespace">Doctrine\Bundle\FixturesBundle</parameter>
       </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
@@ -1933,6 +1938,7 @@
           <argument>C:\wamp64\www\Tp_Groupe\symfony_tpgroupe\vendor\symfony\monolog-bundle/translations</argument>
           <argument>C:\wamp64\www\Tp_Groupe\symfony_tpgroupe\vendor\symfony\maker-bundle\src/translations</argument>
           <argument>C:\wamp64\www\Tp_Groupe\symfony_tpgroupe\vendor\sensio\framework-extra-bundle\src/translations</argument>
+          <argument>C:\wamp64\www\Tp_Groupe\symfony_tpgroupe\vendor\doctrine\doctrine-fixtures-bundle/translations</argument>
         </argument>
         <argument key="cache_vary" type="collection">
           <argument key="scanned_directories" type="collection">
@@ -1951,6 +1957,7 @@
             <argument>C:\wamp64\www\Tp_Groupe\symfony_tpgroupe\vendor\symfony\monolog-bundle/translations</argument>
             <argument>C:\wamp64\www\Tp_Groupe\symfony_tpgroupe\vendor\symfony\maker-bundle\src/translations</argument>
             <argument>C:\wamp64\www\Tp_Groupe\symfony_tpgroupe\vendor\sensio\framework-extra-bundle\src/translations</argument>
+            <argument>C:\wamp64\www\Tp_Groupe\symfony_tpgroupe\vendor\doctrine\doctrine-fixtures-bundle/translations</argument>
           </argument>
         </argument>
       </argument>
@@ -5902,6 +5909,27 @@
     <service id="framework_extra_bundle.argument_name_convertor" class="Sensio\Bundle\FrameworkExtraBundle\Request\ArgumentNameConverter">
       <argument type="service" id="argument_metadata_factory"/>
     </service>
+    <service id="doctrine.fixtures_load_command" class="Doctrine\Bundle\FixturesBundle\Command\LoadDataFixturesDoctrineCommand">
+      <tag name="console.command" command="doctrine:fixtures:load"/>
+      <tag name="container.no_preload"/>
+      <argument type="service" id="doctrine.fixtures.loader"/>
+      <argument type="service" id="doctrine"/>
+      <argument type="collection">
+        <argument key="default" type="service" id="doctrine.fixtures.purger.orm_purger_factory"/>
+      </argument>
+      <call method="setName">
+        <argument>doctrine:fixtures:load</argument>
+      </call>
+    </service>
+    <service id="doctrine.fixtures.loader" class="Doctrine\Bundle\FixturesBundle\Loader\SymfonyFixturesLoader">
+      <argument type="service" id="service_container"/>
+      <call method="addFixtures">
+        <argument type="collection"/>
+      </call>
+    </service>
+    <service id="doctrine.fixtures.purger.orm_purger_factory" class="Doctrine\Bundle\FixturesBundle\Purger\ORMPurgerFactory">
+      <tag name="doctrine.fixtures.purger_factory" alias="default"/>
+    </service>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ArticleController" class="App\Controller\ArticleController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ArticleController" class="App\Controller\ArticleController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ArticleController" class="App\Controller\ArticleController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -6271,12 +6299,12 @@
         <argument key="loader" type="service_closure" id=".errored..service_locator.xUrKPVU.Symfony\Component\Config\Loader\LoaderInterface"/>
       </argument>
     </service>
-    <service id=".service_locator.cIhqKE1" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.HuOiVNP" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="content" type="service_closure" id=".errored..service_locator.cIhqKE1.App\Entity\Contents"/>
-        <argument key="image" type="service_closure" id=".errored..service_locator.cIhqKE1.App\Entity\Images"/>
-        <argument key="page" type="service_closure" id=".errored..service_locator.cIhqKE1.App\Entity\Pages"/>
+        <argument key="contentsRepository" type="service_closure" id="App\Repository\ContentsRepository"/>
+        <argument key="imagesRepository" type="service_closure" id="App\Repository\ImagesRepository"/>
+        <argument key="pagesRepository" type="service_closure" id="App\Repository\PagesRepository"/>
       </argument>
     </service>
     <service id=".service_locator.Ksprajg" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -6376,10 +6404,10 @@
         <argument key="pagesRepository" type="service_closure" id="App\Repository\PagesRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.CVW244J" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.nIKvEFg" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="App\Controller\ArticleController::index" type="service_closure" id=".service_locator.cIhqKE1"/>
+        <argument key="App\Controller\ArticleController::index" type="service_closure" id=".service_locator.HuOiVNP"/>
         <argument key="App\Controller\CategoriesController::delete" type="service_closure" id=".service_locator.wLJWiJM"/>
         <argument key="App\Controller\CategoriesController::edit" type="service_closure" id=".service_locator.wLJWiJM"/>
         <argument key="App\Controller\CategoriesController::index" type="service_closure" id=".service_locator.Ksprajg"/>
@@ -6404,7 +6432,7 @@
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.xUrKPVU"/>
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.xUrKPVU"/>
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.xUrKPVU"/>
-        <argument key="App\Controller\ArticleController:index" type="service_closure" id=".service_locator.cIhqKE1"/>
+        <argument key="App\Controller\ArticleController:index" type="service_closure" id=".service_locator.HuOiVNP"/>
         <argument key="App\Controller\CategoriesController:delete" type="service_closure" id=".service_locator.wLJWiJM"/>
         <argument key="App\Controller\CategoriesController:edit" type="service_closure" id=".service_locator.wLJWiJM"/>
         <argument key="App\Controller\CategoriesController:index" type="service_closure" id=".service_locator.Ksprajg"/>
@@ -7249,12 +7277,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.CVW244J"/>
+      <argument type="service" id=".service_locator.nIKvEFg"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.CVW244J"/>
+      <argument type="service" id=".service_locator.nIKvEFg"/>
     </service>
     <service id="debug.traced.messenger.bus.default.inner" class="Symfony\Component\Messenger\MessageBus">
       <argument type="iterator">
@@ -7282,9 +7310,6 @@
       </call>
     </service>
     <service id=".errored..service_locator.xUrKPVU.Symfony\Component\Config\Loader\LoaderInterface" class="Symfony\Component\Config\Loader\LoaderInterface"/>
-    <service id=".errored..service_locator.cIhqKE1.App\Entity\Contents" class="App\Entity\Contents"/>
-    <service id=".errored..service_locator.cIhqKE1.App\Entity\Images" class="App\Entity\Images"/>
-    <service id=".errored..service_locator.cIhqKE1.App\Entity\Pages" class="App\Entity\Pages"/>
     <service id=".errored..service_locator.gFHHwHB.App\Entity\Categories" class="App\Entity\Categories"/>
     <service id=".errored..service_locator.wLJWiJM.App\Entity\Categories" class="App\Entity\Categories"/>
     <service id=".errored..service_locator.xKAokjN.App\Entity\Contents" class="App\Entity\Contents"/>
@@ -7774,7 +7799,7 @@
     </service>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <tag name="container.no_preload"/>
-      <argument type="service" id=".service_locator.mMehwGU"/>
+      <argument type="service" id=".service_locator.xA9ScoS"/>
       <argument type="collection">
         <argument key="about">console.command.about</argument>
         <argument key="assets:install">console.command.assets_install</argument>
@@ -7853,6 +7878,7 @@
         <argument key="lint:twig">twig.command.lint</argument>
         <argument key="debug:firewall">security.command.debug_firewall</argument>
         <argument key="security:hash-password">security.command.user_password_hash</argument>
+        <argument key="doctrine:fixtures:load">doctrine.fixtures_load_command</argument>
         <argument key="make:auth">maker.auto_command.make_auth</argument>
         <argument key="make:command">maker.auto_command.make_command</argument>
         <argument key="make:twig-component">maker.auto_command.make_twig_component</argument>
@@ -7880,7 +7906,7 @@
         <argument key="make:stimulus-controller">maker.auto_command.make_stimulus_controller</argument>
       </argument>
     </service>
-    <service id=".service_locator.mMehwGU" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.xA9ScoS" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="console.command.about" type="service_closure" id=".console.command.about.lazy"/>
@@ -7960,6 +7986,7 @@
         <argument key="twig.command.lint" type="service_closure" id=".twig.command.lint.lazy"/>
         <argument key="security.command.debug_firewall" type="service_closure" id=".security.command.debug_firewall.lazy"/>
         <argument key="security.command.user_password_hash" type="service_closure" id=".security.command.user_password_hash.lazy"/>
+        <argument key="doctrine.fixtures_load_command" type="service_closure" id="doctrine.fixtures_load_command"/>
         <argument key="maker.auto_command.make_auth" type="service_closure" id=".maker.auto_command.make_auth.lazy"/>
         <argument key="maker.auto_command.make_command" type="service_closure" id=".maker.auto_command.make_command.lazy"/>
         <argument key="maker.auto_command.make_twig_component" type="service_closure" id=".maker.auto_command.make_twig_component.lazy"/>
@@ -8206,7 +8233,7 @@
     <service id="sensio_framework_extra.security.expression_language" alias="sensio_framework_extra.security.expression_language.default"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.gSv9zYw" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.CVW244J"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.nIKvEFg"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -8227,10 +8254,10 @@
     <service id=".service_locator.80edgLI" alias="messenger.receiver_locator"/>
     <service id=".service_locator.h8Jkkd2" alias="messenger.retry_strategy_locator"/>
     <service id=".service_locator.0GV1BZZ" alias=".service_locator.gSv9zYw"/>
-    <service id=".service_locator.I5YQcxo" alias=".service_locator.cIhqKE1"/>
+    <service id=".service_locator.IH3R3Uu" alias=".service_locator.HuOiVNP"/>
     <service id=".service_locator.6mkBufV" alias=".service_locator.wLJWiJM"/>
     <service id=".service_locator.oZmLawd" alias=".service_locator.vQELRH5"/>
-    <service id=".service_locator.g_vGOXa" alias=".service_locator.CVW244J"/>
+    <service id=".service_locator.hCC6g3q" alias=".service_locator.nIKvEFg"/>
     <service id=".service_locator.wKF4yn1" alias=".service_locator.19_mNxd"/>
     <service id=".service_locator.iTt5hjn" alias=".service_locator._JwDl8W"/>
     <service id=".service_locator.XW18Svm" alias=".service_locator.TcKhdzh"/>
@@ -8280,7 +8307,7 @@
     <service id="http_client" alias=".debug.http_client"/>
     <service id="doctrine.orm.default_metadata_driver" alias=".doctrine.orm.default_metadata_driver"/>
     <service id=".service_locator.uo5c0SP" alias=".service_locator.xUrKPVU"/>
-    <service id=".service_locator.oBt7ZHG" alias=".service_locator.cIhqKE1"/>
+    <service id=".service_locator.R7XsvuF" alias=".service_locator.HuOiVNP"/>
     <service id=".service_locator.am6nKt5" alias=".service_locator.Ksprajg"/>
     <service id=".service_locator.wKyVj.F" alias=".service_locator.gFHHwHB"/>
     <service id=".service_locator.87pyCL." alias=".service_locator.wLJWiJM"/>

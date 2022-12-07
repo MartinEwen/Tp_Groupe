@@ -3,31 +3,16 @@
 {% block title %}Hello ArticleController!{% endblock %}
 
 {% block body %}
-<table class="table">
-        <tbody>
-            <tr>
-                <td>{{ page.titlePage }}</td>
-            </tr>
-            <tr>
-                <td>{{ page.creation }}</td>
-            </tr>
-            <tr>
-                <td>{{ page.imagePages }}</td>
-            </tr>
-           {% for content in page.contents  %}
-            <tr>
-                <td>{{ content.titleContent }}</td>
-            </tr>
-            <tr>
-                <td>{{ content.content }}</td>
-            </tr>
-            
-            {# <tr>
-                <td>{{ image.nameImage }}</td>
-            </tr> #}
-            {% else %}
-            <h2> Article vide </h2>
-            {% endfor %}
-        </tbody>
-    </table>
+
+        {% for image in images %}
+
+        
+              <h1>{{ image.content.page.titlePage }}</h1>
+                <p>{{ image.content.page.summary }}</p>
+                <h3>{{ image.content.titleContent }}</h3>
+                <p>{{ image.content.content }}</p>
+                <img src="{{ asset('uploads/images/' ~ image.nameImage) }}" width="100">
+
+        {% endfor %}
+
 {% endblock %}
