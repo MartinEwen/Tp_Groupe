@@ -19,14 +19,24 @@
 
 .main1 {
     // background-color: red;
-    width: 400px;
+    width: 320px;
     margin: 2em;
 }
 
 .main2 {
     background-color: green;
     height: 200px;
-    width: 300px;
+    width: 320px;
     margin: 2em;
-
 }
+
+@media screen and (max-width: 990px) {
+    .displayMain1{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    
+        // background-color: blue;
+    }
+   }

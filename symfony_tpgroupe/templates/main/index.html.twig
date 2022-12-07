@@ -18,20 +18,22 @@
 	</style>
 
 	{% for page in pages %}
-	<div class="container">
-		<div class="displayMain1 col-lg-12">
+		<div class="container">
+			<div class="displayMain1 col-lg-12">
 
-		<div class="main1">
-            <h5>{{ page.titlePage }}</h5>
-            <p>{{ page.creation ? page.creation|date('Y-m-d H:i:s') : '' }}</p>
-            <p>{{ page.summary }}</p>
-        </div>
-            
-		<div class="main2">{{ page.imagePages }}</div>
-            
+				<div class="main1">
+					<h5>{{ page.titlePage }}</h5>
+					<p>{{ page.creation ? page.creation|date('Y-m-d H:i:s') : '' }}</p>
+					<p>{{ page.summary }}</p>
+				</div>
+
+				<div class="main2">
+                    {{ page.imagePages }}
+                </div>
+
+			</div>
 		</div>
-	</div>
-    <p>teste</p>
+
 	{% endfor %}
 
 {% endblock %}
