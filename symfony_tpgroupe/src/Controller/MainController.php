@@ -13,7 +13,7 @@ class MainController extends AbstractController
     public function index(PagesRepository $pagesRepository): Response
     {
         return $this->render('main/index.html.twig', [
-            'controller_name' => 'User',
+            
             'pages' => $pagesRepository->findAll(),
         ]);
     }
