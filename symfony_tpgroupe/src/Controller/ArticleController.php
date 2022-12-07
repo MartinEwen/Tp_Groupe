@@ -23,10 +23,4 @@ class ArticleController extends AbstractController
             'images' => $imagesRepository->findAll(),
         ]);
     }
-
-    #[Route('/new', name: 'new_article')]
-    public function new(): Response
-    {
-        return $this->render('article/new.html.twig');
-    }
 }

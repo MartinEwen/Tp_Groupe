@@ -66,10 +66,10 @@ class __TwigTemplate_2e28938bc97b201051005636635acfba extends Template
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/style.css"), "html", null, true);
         echo "\">
 
-        ";
+\t\t";
         // line 18
-        echo "\t\t<link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css\" rel=\"stylesheet\"
-        integrity=\"sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT\" crossorigin=\"anonymous\">
+        echo "\t\t<link
+\t\thref=\"https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT\" crossorigin=\"anonymous\">
 
 \t\t";
         // line 22
@@ -87,35 +87,69 @@ class __TwigTemplate_2e28938bc97b201051005636635acfba extends Template
 \t<body>
 
 \t\t";
-        // line 33
-        $this->displayBlock('body', $context, $blocks);
         // line 34
         echo "
-\t\t";
-        // line 36
-        echo "
-\t\t<div class=\"subnavigation-container\">
-\t\t\t<div class=\"container\">
-\t\t\t\t<nav class=\"navbar p-a-0\">
-\t\t\t\t\t<ul class=\"nav navbar-nav col-subnav\">
-\t\t\t\t\t\t<li class=\"nav-item\">
-\t\t\t\t\t\t\t<a class=\"nav-link active\" href=\"#\">Home</a>
-\t\t\t\t\t\t</li>
-\t\t\t\t\t\t<li class=\"nav-item\">
-\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"#\">Features</a>
-\t\t\t\t\t\t</li>
+\t\t<nav class=\"navbar navbar-expand-lg navbar-dark navColor\">
 
-\t\t\t\t\t\t<li class=\"nav-item\">
-\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"#\">Pricing</a>
+\t\t\t<div class=\"container-fluid\">
+\t\t\t\t<a class=\"navbar-brand\" href=\"#\">Wiki-HEROES</a>
+\t\t\t\t<button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarScroll\" aria-controls=\"navbarScroll\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
+\t\t\t\t\t<span class=\"navbar-toggler-icon\"></span>
+\t\t\t\t</button>
+\t\t\t\t<div class=\"collapse navbar-collapse\" id=\"navbarScroll\">
+\t\t\t\t\t<ul class=\"navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll\" style=\"--bs-scroll-height: 100px;\">
+\t\t\t\t\t\t<li class=\"nav-item dropdown\">
+\t\t\t\t\t\t\t<a class=\"nav-link dropdown-toggle\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">
+\t\t\t\t\t\t\t\tuser
+\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t<ul class=\"dropdown-menu\">
+\t\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"#\">setting</a>
+\t\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"#\">Question</a>
+\t\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t\t<li><hr class=\"dropdown-divider\"></li>
+\t\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"#\">logout</a>
+\t\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t</ul>
 \t\t\t\t\t\t</li>
 \t\t\t\t\t\t<li class=\"nav-item\">
-\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"#\">About</a>
+\t\t\t\t\t\t\t<a class=\"nav-link active\" aria-current=\"page\" href=\"";
+        // line 62
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("index");
+        echo "\">HOME</a>
+\t\t\t\t\t\t</li>
+\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"";
+        // line 65
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pages_index");
+        echo "\">PAGES</a>
 \t\t\t\t\t\t</li>
 \t\t\t\t\t</ul>
-\t\t\t\t</nav>
+\t\t\t\t\t<form class=\"d-flex\" role=\"search\">
+\t\t\t\t\t\t<input class=\"form-control me-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">
+\t\t\t\t\t\t<button class=\"btn btn-outline-success\" type=\"submit\">Search</button>
+\t\t\t\t\t</form>
+\t\t\t\t</div>
 \t\t\t</div>
-\t\t</div>
 
+\t\t</nav>
+
+\t\t";
+        // line 78
+        echo "
+
+\t\t";
+        // line 80
+        $this->displayBlock('body', $context, $blocks);
+        // line 81
+        echo "
+
+\t\t";
+        // line 84
+        echo "
 \t\t<div class=\"m-t-3\"></div>
 
 \t\t<footer class=\"mainfooter\" role=\"contentinfo\">
@@ -243,16 +277,17 @@ class __TwigTemplate_2e28938bc97b201051005636635acfba extends Template
 \t\t</footer>
 
 \t\t";
-        // line 186
+        // line 212
         echo "
 
 \t\t";
-        // line 189
+        // line 215
         echo "\t\t<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8\" crossorigin=\"anonymous\"></script>
 
 \t</body>
 
-</html>";
+</html>
+";
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
 
@@ -327,7 +362,7 @@ class __TwigTemplate_2e28938bc97b201051005636635acfba extends Template
 
     }
 
-    // line 33
+    // line 80
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -357,7 +392,7 @@ class __TwigTemplate_2e28938bc97b201051005636635acfba extends Template
 
     public function getDebugInfo()
     {
-        return array (  331 => 33,  318 => 28,  308 => 27,  295 => 24,  285 => 23,  265 => 7,  251 => 189,  247 => 186,  96 => 36,  93 => 34,  91 => 33,  86 => 30,  84 => 27,  81 => 26,  79 => 23,  76 => 22,  71 => 18,  66 => 15,  63 => 14,  57 => 9,  55 => 7,  47 => 1,);
+        return array (  366 => 80,  353 => 28,  343 => 27,  330 => 24,  320 => 23,  300 => 7,  285 => 215,  281 => 212,  152 => 84,  148 => 81,  146 => 80,  142 => 78,  127 => 65,  121 => 62,  91 => 34,  86 => 30,  84 => 27,  81 => 26,  79 => 23,  76 => 22,  71 => 18,  66 => 15,  63 => 14,  57 => 9,  55 => 7,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -378,9 +413,9 @@ class __TwigTemplate_2e28938bc97b201051005636635acfba extends Template
 \t\t<link
 \t\trel=\"stylesheet\" href=\"{{asset(\"css/style.css\")}}\">
 
-        {# Bootstrap #}
-\t\t<link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css\" rel=\"stylesheet\"
-        integrity=\"sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT\" crossorigin=\"anonymous\">
+\t\t{# Bootstrap #}
+\t\t<link
+\t\thref=\"https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT\" crossorigin=\"anonymous\">
 
 \t\t{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
 
@@ -394,31 +429,57 @@ class __TwigTemplate_2e28938bc97b201051005636635acfba extends Template
 \t</head>
 \t<body>
 
-\t\t{% block body %}{% endblock %}
+\t\t{# <HeaderBootstrap> #}
 
-\t\t{# <BootstrapFooter> #}
+\t\t<nav class=\"navbar navbar-expand-lg navbar-dark navColor\">
 
-\t\t<div class=\"subnavigation-container\">
-\t\t\t<div class=\"container\">
-\t\t\t\t<nav class=\"navbar p-a-0\">
-\t\t\t\t\t<ul class=\"nav navbar-nav col-subnav\">
-\t\t\t\t\t\t<li class=\"nav-item\">
-\t\t\t\t\t\t\t<a class=\"nav-link active\" href=\"#\">Home</a>
+\t\t\t<div class=\"container-fluid\">
+\t\t\t\t<a class=\"navbar-brand\" href=\"#\">Wiki-HEROES</a>
+\t\t\t\t<button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarScroll\" aria-controls=\"navbarScroll\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
+\t\t\t\t\t<span class=\"navbar-toggler-icon\"></span>
+\t\t\t\t</button>
+\t\t\t\t<div class=\"collapse navbar-collapse\" id=\"navbarScroll\">
+\t\t\t\t\t<ul class=\"navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll\" style=\"--bs-scroll-height: 100px;\">
+\t\t\t\t\t\t<li class=\"nav-item dropdown\">
+\t\t\t\t\t\t\t<a class=\"nav-link dropdown-toggle\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">
+\t\t\t\t\t\t\t\tuser
+\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t<ul class=\"dropdown-menu\">
+\t\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"#\">setting</a>
+\t\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"#\">Question</a>
+\t\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t\t<li><hr class=\"dropdown-divider\"></li>
+\t\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"#\">logout</a>
+\t\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t</ul>
 \t\t\t\t\t\t</li>
 \t\t\t\t\t\t<li class=\"nav-item\">
-\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"#\">Features</a>
-\t\t\t\t\t\t</li>
-
-\t\t\t\t\t\t<li class=\"nav-item\">
-\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"#\">Pricing</a>
+\t\t\t\t\t\t\t<a class=\"nav-link active\" aria-current=\"page\" href=\"{{ path('index') }}\">HOME</a>
 \t\t\t\t\t\t</li>
 \t\t\t\t\t\t<li class=\"nav-item\">
-\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"#\">About</a>
+\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"{{ path('pages_index') }}\">PAGES</a>
 \t\t\t\t\t\t</li>
 \t\t\t\t\t</ul>
-\t\t\t\t</nav>
+\t\t\t\t\t<form class=\"d-flex\" role=\"search\">
+\t\t\t\t\t\t<input class=\"form-control me-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">
+\t\t\t\t\t\t<button class=\"btn btn-outline-success\" type=\"submit\">Search</button>
+\t\t\t\t\t</form>
+\t\t\t\t</div>
 \t\t\t</div>
-\t\t</div>
+
+\t\t</nav>
+
+\t\t{# </HeaderBootstrap> #}
+
+
+\t\t{% block body %}{% endblock %}
+
+
+\t\t{# <BootstrapFooter> #}
 
 \t\t<div class=\"m-t-3\"></div>
 
@@ -554,6 +615,7 @@ class __TwigTemplate_2e28938bc97b201051005636635acfba extends Template
 
 \t</body>
 
-</html>", "base.html.twig", "C:\\wamp64\\www\\Tp_Groupe\\symfony_tpgroupe\\templates\\base.html.twig");
+</html>
+", "base.html.twig", "C:\\wamp64\\www\\Tp_Groupe\\symfony_tpgroupe\\templates\\base.html.twig");
     }
 }

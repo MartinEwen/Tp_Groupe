@@ -26,6 +26,9 @@ class Contents
     #[ORM\ManyToOne(inversedBy: 'contents')]
     private ?Pages $page = null;
 
+    #[ORM\ManyToOne(inversedBy: 'contents')]
+    private ?Images $image = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +78,18 @@ class Contents
     public function setPage(?pages $page): self
     {
         $this->page = $page;
+
+        return $this;
+    }
+
+    public function getImage(): ?images
+    {
+        return $this->image;
+    }
+
+    public function setImage(?images $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }

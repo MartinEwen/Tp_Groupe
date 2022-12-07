@@ -77,4 +77,6 @@ class ContentsController extends AbstractController
 
         return $this->redirectToRoute('contents_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    
 }

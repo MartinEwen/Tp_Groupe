@@ -15,7 +15,6 @@ return [
         '/_profiler/xdebug' => [[['_route' => '_profiler_xdebug', '_controller' => 'web_profiler.controller.profiler::xdebugAction'], null, null, null, false, false, null]],
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
         '/article' => [[['_route' => 'article', '_controller' => 'App\\Controller\\ArticleController::index'], null, null, null, true, false, null]],
-        '/article/new' => [[['_route' => 'new_article', '_controller' => 'App\\Controller\\ArticleController::new'], null, null, null, false, false, null]],
         '/categories' => [[['_route' => 'categories_index', '_controller' => 'App\\Controller\\CategoriesController::index'], null, ['GET' => 0], null, true, false, null]],
         '/categories/new' => [[['_route' => 'categories_new', '_controller' => 'App\\Controller\\CategoriesController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/contents' => [[['_route' => 'contents_index', '_controller' => 'App\\Controller\\ContentsController::index'], null, ['GET' => 0], null, true, false, null]],
