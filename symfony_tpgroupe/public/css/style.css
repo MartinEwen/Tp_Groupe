@@ -1,3 +1,23 @@
+.navColor {
+  background-color: #345e75 !important;
+}
+
+.btn {
+  background-color: white !important;
+}
+
+.btn:hover {
+  background-color: rgb(6, 138, 17) !important;
+}
+
+.btn {
+  color: rgb(6, 138, 17) !important;
+}
+
+.btn:hover {
+  color: white !important;
+}
+
 footer {
   color: white;
 }
