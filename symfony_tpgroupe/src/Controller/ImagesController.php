@@ -91,4 +91,6 @@ class ImagesController extends AbstractController
 
         return $this->redirectToRoute('images_index', [], Response::HTTP_SEE_OTHER);
     }
+    
+    
 }

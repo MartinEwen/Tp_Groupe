@@ -1,5 +1,6 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
     <button class="btn">{{ button_label|default('Save and return to index') }}</button>
-    <button class="btn">{{ button_label|default('Save and add another Content') }}</button>
+    <a class="btn" href="{{ path('contents_new') }}">add another Content</a>
+    <a class="btn" href="{{ path('index') }}">return to index</a>
 {{ form_end(form) }}
