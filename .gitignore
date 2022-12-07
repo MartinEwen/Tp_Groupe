@@ -23,3 +23,6 @@ symfony_tpgroupe/phpunit.xml
 
 ###< symfony/phpunit-bridge ###
 symfony_tpgroupe/var/log/dev.log
+symfony_tpgroupe/var/log/dev.log
+symfony_tpgroupe/var/log/dev.log
+symfony_tpgroupe/var/cache/dev/twig/a1/a149348925efccb705bb3937ca6a88da.php
