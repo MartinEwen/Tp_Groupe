@@ -77,4 +77,5 @@ class PagesController extends AbstractController
 
         return $this->redirectToRoute('pages_index', [], Response::HTTP_SEE_OTHER);
     }
+    
 }
